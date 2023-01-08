@@ -1,0 +1,6 @@
+
+select month(record_date), MAX(data_value) as max, MIN(data_value) as min,
+       round(avg(case when data_type = 'avg' then data_value end)) AS avg
+FROM temperature_records
+WHERE MONTH(record_date)> 6
+GROUP BY MONTH(record_date)
